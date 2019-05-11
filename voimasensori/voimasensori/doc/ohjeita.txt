@@ -1,0 +1,13 @@
+﻿Phidget Bridge 4 sensor application
+
+1) install this:
+
+https://www.phidgets.com/docs/OS_-_Windows#Quick_Downloads
+
+
+Documentation for sensor:
+
+https://www.phidgets.com/?tier=3&catid=98&pcid=78&prodid=1027
+
+https://www.phidgets.com/docs/Programming_Resources
+
