@@ -36,6 +36,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AGauge, Version=2.0.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\AGauge.2.0.1\lib\NET451\AGauge.dll</HintPath>
+    </Reference>
     <Reference Include="Phidget22.NET, Version=1.1.1.6, Culture=neutral, PublicKeyToken=aefa9ee0bcd237af, processorArchitecture=MSIL">
       <HintPath>..\packages\Phidget22.NET.1.1.20190418\lib\net46\Phidget22.NET.dll</HintPath>
     </Reference>

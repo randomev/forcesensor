@@ -51,6 +51,7 @@ namespace voimasensori
         void ratio_attach(object sender, Phidget22.Events.AttachEventArgs e)
         {
             VoltageRatioInput attached = (VoltageRatioInput)sender;
+            attached.DataInterval = attached.MinDataInterval;
         }
 
         void ratio_detach(object sender, Phidget22.Events.DetachEventArgs e)
@@ -66,6 +67,7 @@ namespace voimasensori
             lblLoad1.Text = l.ToString("f3"); //if we have input the necessary information we can output a load value as data comes in
 
             addToGraph(l, chart1);
+            aGauge1.Value = (float)l;
         }
 
         void addToGraph(double value, System.Windows.Forms.DataVisualization.Charting.Chart chart)

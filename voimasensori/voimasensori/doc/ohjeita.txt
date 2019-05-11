@@ -11,3 +11,7 @@ https://www.phidgets.com/?tier=3&catid=98&pcid=78&prodid=1027
 
 https://www.phidgets.com/docs/Programming_Resources
 
+Icons:
+
+https://icons8.com/icons/set/visual%20studio
+
