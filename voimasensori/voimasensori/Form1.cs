@@ -25,7 +25,7 @@ namespace voimasensori
         private readonly double b = -346.892;
 
         List<DataPoint> DataToDisk = new List<DataPoint>();
-
+        string logfilename = "RocketData_" + DateTime.Now.ToLongDateString() + "-" + DateTime.Now.ToLongTimeString() + ".txt";
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
             ratio.Close(); //clean up to prevent issues down the line
@@ -38,6 +38,8 @@ namespace voimasensori
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            this.Text = logfilename;
+
             ratio = new VoltageRatioInput(); //create an instance of the object
 
             //register the pertinent event handlers
@@ -105,7 +107,7 @@ namespace voimasensori
             DataToDisk.Clear();
             DataToDiskMutex.ReleaseMutex();
 
-            SaveToCsv(clonedDataToDisk, "RocketSaveData.txt");
+            SaveToCsv(clonedDataToDisk, logfilename);
 
         }
 
