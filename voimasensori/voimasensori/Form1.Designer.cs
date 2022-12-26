@@ -28,31 +28,42 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea9 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend9 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series9 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea10 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend10 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series10 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.lblLoad1 = new System.Windows.Forms.Label();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
-            this.warningIcon = new System.Windows.Forms.ToolStripStatusLabel();
+            this.lblStatus1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.aGauge1 = new System.Windows.Forms.AGauge();
+            this.chartImpulse = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.chkActive = new System.Windows.Forms.CheckBox();
+            this.timerWriteToFile = new System.Windows.Forms.Timer(this.components);
+            this.lblStatus2 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.timer2 = new System.Windows.Forms.Timer(this.components);
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             this.statusStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chartImpulse)).BeginInit();
             this.SuspendLayout();
             // 
             // chart1
             // 
-            chartArea2.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea2);
-            legend2.Name = "Legend1";
-            this.chart1.Legends.Add(legend2);
+            chartArea9.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea9);
+            legend9.Name = "Legend1";
+            this.chart1.Legends.Add(legend9);
             this.chart1.Location = new System.Drawing.Point(0, 105);
             this.chart1.Name = "chart1";
-            series2.ChartArea = "ChartArea1";
-            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.FastLine;
-            series2.Legend = "Legend1";
-            series2.Name = "Series1";
-            this.chart1.Series.Add(series2);
+            series9.ChartArea = "ChartArea1";
+            series9.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.FastLine;
+            series9.Legend = "Legend1";
+            series9.Name = "Series1";
+            this.chart1.Series.Add(series9);
             this.chart1.Size = new System.Drawing.Size(563, 411);
             this.chart1.TabIndex = 0;
             this.chart1.Text = "chart1";
@@ -61,7 +72,7 @@
             // 
             this.lblLoad1.AutoSize = true;
             this.lblLoad1.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblLoad1.Location = new System.Drawing.Point(31, 42);
+            this.lblLoad1.Location = new System.Drawing.Point(571, 43);
             this.lblLoad1.Name = "lblLoad1";
             this.lblLoad1.Size = new System.Drawing.Size(445, 37);
             this.lblLoad1.TabIndex = 1;
@@ -70,18 +81,19 @@
             // statusStrip1
             // 
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.warningIcon});
+            this.lblStatus1,
+            this.lblStatus2});
             this.statusStrip1.Location = new System.Drawing.Point(0, 540);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(999, 22);
+            this.statusStrip1.Size = new System.Drawing.Size(1499, 22);
             this.statusStrip1.TabIndex = 2;
             this.statusStrip1.Text = "statusStrip1";
             // 
-            // warningIcon
+            // lblStatus1
             // 
-            this.warningIcon.Name = "warningIcon";
-            this.warningIcon.Size = new System.Drawing.Size(12, 17);
-            this.warningIcon.Text = "-";
+            this.lblStatus1.Name = "lblStatus1";
+            this.lblStatus1.Size = new System.Drawing.Size(12, 17);
+            this.lblStatus1.Text = "-";
             // 
             // aGauge1
             // 
@@ -120,16 +132,76 @@
             this.aGauge1.ScaleNumbersRotation = 0;
             this.aGauge1.ScaleNumbersStartScaleLine = 0;
             this.aGauge1.ScaleNumbersStepScaleLines = 1;
-            this.aGauge1.Size = new System.Drawing.Size(400, 400);
+            this.aGauge1.Size = new System.Drawing.Size(412, 400);
             this.aGauge1.TabIndex = 3;
             this.aGauge1.Text = "aGauge1";
             this.aGauge1.Value = 0F;
+            // 
+            // chartImpulse
+            // 
+            chartArea10.Name = "ChartArea1";
+            this.chartImpulse.ChartAreas.Add(chartArea10);
+            legend10.Name = "Legend1";
+            this.chartImpulse.Legends.Add(legend10);
+            this.chartImpulse.Location = new System.Drawing.Point(1018, 94);
+            this.chartImpulse.Name = "chartImpulse";
+            series10.ChartArea = "ChartArea1";
+            series10.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.FastLine;
+            series10.Legend = "Legend1";
+            series10.Name = "Series1";
+            this.chartImpulse.Series.Add(series10);
+            this.chartImpulse.Size = new System.Drawing.Size(469, 411);
+            this.chartImpulse.TabIndex = 4;
+            this.chartImpulse.Text = "chart2";
+            // 
+            // chkActive
+            // 
+            this.chkActive.AutoSize = true;
+            this.chkActive.Checked = true;
+            this.chkActive.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkActive.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkActive.Location = new System.Drawing.Point(37, 62);
+            this.chkActive.Name = "chkActive";
+            this.chkActive.Size = new System.Drawing.Size(250, 29);
+            this.chkActive.TabIndex = 5;
+            this.chkActive.Text = "Graph and log active";
+            this.chkActive.UseVisualStyleBackColor = true;
+            // 
+            // timerWriteToFile
+            // 
+            this.timerWriteToFile.Enabled = true;
+            this.timerWriteToFile.Interval = 5000;
+            this.timerWriteToFile.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // lblStatus2
+            // 
+            this.lblStatus2.Name = "lblStatus2";
+            this.lblStatus2.Size = new System.Drawing.Size(12, 17);
+            this.lblStatus2.Text = "-";
+            // 
+            // timer2
+            // 
+            this.timer2.Enabled = true;
+            this.timer2.Interval = 1000;
+            this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(1015, 78);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(112, 13);
+            this.label1.TabIndex = 6;
+            this.label1.Text = "Data buffer item count";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(999, 562);
+            this.ClientSize = new System.Drawing.Size(1499, 562);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.chkActive);
+            this.Controls.Add(this.chartImpulse);
             this.Controls.Add(this.aGauge1);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.lblLoad1);
@@ -141,6 +213,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chartImpulse)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -151,8 +224,14 @@
         private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
         private System.Windows.Forms.Label lblLoad1;
         private System.Windows.Forms.StatusStrip statusStrip1;
-        private System.Windows.Forms.ToolStripStatusLabel warningIcon;
+        private System.Windows.Forms.ToolStripStatusLabel lblStatus1;
         private System.Windows.Forms.AGauge aGauge1;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chartImpulse;
+        private System.Windows.Forms.CheckBox chkActive;
+        private System.Windows.Forms.Timer timerWriteToFile;
+        private System.Windows.Forms.ToolStripStatusLabel lblStatus2;
+        private System.Windows.Forms.Timer timer2;
+        private System.Windows.Forms.Label label1;
     }
 }
 
