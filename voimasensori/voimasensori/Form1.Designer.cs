@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.lblLoad1 = new System.Windows.Forms.Label();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
@@ -42,17 +42,17 @@
             // 
             // chart1
             // 
-            chartArea1.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            this.chart1.Legends.Add(legend1);
+            chartArea2.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea2);
+            legend2.Name = "Legend1";
+            this.chart1.Legends.Add(legend2);
             this.chart1.Location = new System.Drawing.Point(0, 105);
             this.chart1.Name = "chart1";
-            series1.ChartArea = "ChartArea1";
-            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.FastLine;
-            series1.Legend = "Legend1";
-            series1.Name = "Series1";
-            this.chart1.Series.Add(series1);
+            series2.ChartArea = "ChartArea1";
+            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.FastLine;
+            series2.Legend = "Legend1";
+            series2.Name = "Series1";
+            this.chart1.Series.Add(series2);
             this.chart1.Size = new System.Drawing.Size(563, 411);
             this.chart1.TabIndex = 0;
             this.chart1.Text = "chart1";
@@ -63,9 +63,9 @@
             this.lblLoad1.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblLoad1.Location = new System.Drawing.Point(31, 42);
             this.lblLoad1.Name = "lblLoad1";
-            this.lblLoad1.Size = new System.Drawing.Size(115, 37);
+            this.lblLoad1.Size = new System.Drawing.Size(445, 37);
             this.lblLoad1.TabIndex = 1;
-            this.lblLoad1.Text = "Thurst";
+            this.lblLoad1.Text = "Rocket motor thurst (grams)";
             // 
             // statusStrip1
             // 
@@ -86,41 +86,41 @@
             // aGauge1
             // 
             this.aGauge1.BaseArcColor = System.Drawing.Color.DimGray;
-            this.aGauge1.BaseArcRadius = 80;
+            this.aGauge1.BaseArcRadius = 180;
             this.aGauge1.BaseArcStart = 135;
             this.aGauge1.BaseArcSweep = 270;
             this.aGauge1.BaseArcWidth = 2;
-            this.aGauge1.Center = new System.Drawing.Point(100, 100);
-            this.aGauge1.Location = new System.Drawing.Point(601, 105);
-            this.aGauge1.MaxValue = 400F;
+            this.aGauge1.Center = new System.Drawing.Point(200, 200);
+            this.aGauge1.Location = new System.Drawing.Point(578, 105);
+            this.aGauge1.MaxValue = 500F;
             this.aGauge1.MinValue = -100F;
             this.aGauge1.Name = "aGauge1";
             this.aGauge1.NeedleColor1 = System.Windows.Forms.AGaugeNeedleColor.Red;
             this.aGauge1.NeedleColor2 = System.Drawing.Color.DimGray;
-            this.aGauge1.NeedleRadius = 80;
+            this.aGauge1.NeedleRadius = 160;
             this.aGauge1.NeedleType = System.Windows.Forms.NeedleType.Advance;
-            this.aGauge1.NeedleWidth = 2;
+            this.aGauge1.NeedleWidth = 3;
             this.aGauge1.ScaleLinesInterColor = System.Drawing.Color.Black;
-            this.aGauge1.ScaleLinesInterInnerRadius = 73;
-            this.aGauge1.ScaleLinesInterOuterRadius = 80;
+            this.aGauge1.ScaleLinesInterInnerRadius = 173;
+            this.aGauge1.ScaleLinesInterOuterRadius = 180;
             this.aGauge1.ScaleLinesInterWidth = 1;
             this.aGauge1.ScaleLinesMajorColor = System.Drawing.Color.Black;
-            this.aGauge1.ScaleLinesMajorInnerRadius = 70;
-            this.aGauge1.ScaleLinesMajorOuterRadius = 80;
+            this.aGauge1.ScaleLinesMajorInnerRadius = 170;
+            this.aGauge1.ScaleLinesMajorOuterRadius = 180;
             this.aGauge1.ScaleLinesMajorStepValue = 50F;
             this.aGauge1.ScaleLinesMajorWidth = 2;
             this.aGauge1.ScaleLinesMinorColor = System.Drawing.Color.Gray;
-            this.aGauge1.ScaleLinesMinorInnerRadius = 75;
-            this.aGauge1.ScaleLinesMinorOuterRadius = 80;
+            this.aGauge1.ScaleLinesMinorInnerRadius = 175;
+            this.aGauge1.ScaleLinesMinorOuterRadius = 180;
             this.aGauge1.ScaleLinesMinorTicks = 9;
             this.aGauge1.ScaleLinesMinorWidth = 1;
             this.aGauge1.ScaleNumbersColor = System.Drawing.Color.Black;
             this.aGauge1.ScaleNumbersFormat = null;
-            this.aGauge1.ScaleNumbersRadius = 95;
+            this.aGauge1.ScaleNumbersRadius = 195;
             this.aGauge1.ScaleNumbersRotation = 0;
             this.aGauge1.ScaleNumbersStartScaleLine = 0;
             this.aGauge1.ScaleNumbersStepScaleLines = 1;
-            this.aGauge1.Size = new System.Drawing.Size(208, 188);
+            this.aGauge1.Size = new System.Drawing.Size(400, 400);
             this.aGauge1.TabIndex = 3;
             this.aGauge1.Text = "aGauge1";
             this.aGauge1.Value = 0F;
