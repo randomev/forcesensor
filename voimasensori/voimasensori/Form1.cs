@@ -15,7 +15,10 @@ namespace voimasensori
     public partial class Form1 : Form
     {
         VoltageRatioInput ratio = null; //declare our voltageratio object that will be used to connect to the bridge device
-        double m = 41809117.297, b = 2412.078; //our data points as well as the calculated slope and intercept
+                                        //double m = 41809117.297, b = 2412.078; //our data points as well as the calculated slope and intercept
+
+        private readonly double m = 5215460.310;
+        private readonly double b = -346.892;
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
@@ -63,6 +66,7 @@ namespace voimasensori
 
         void ratio_change(object sender, Phidget22.Events.VoltageRatioInputVoltageRatioChangeEventArgs e)
         {
+
             double l = ((m * e.VoltageRatio) + b);
             lblLoad1.Text = l.ToString("f3"); //if we have input the necessary information we can output a load value as data comes in
 
