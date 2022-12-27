@@ -40,6 +40,7 @@
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.lblStatus1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.lblStatus2 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.lblArduinoStatus = new System.Windows.Forms.ToolStripStatusLabel();
             this.aGauge1 = new System.Windows.Forms.AGauge();
             this.chartImpulse = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.chkActive = new System.Windows.Forms.CheckBox();
@@ -47,7 +48,6 @@
             this.timer2 = new System.Windows.Forms.Timer(this.components);
             this.label1 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
-            this.lblArduinoStatus = new System.Windows.Forms.ToolStripStatusLabel();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             this.statusStrip1.SuspendLayout();
@@ -104,6 +104,12 @@
             this.lblStatus2.Name = "lblStatus2";
             this.lblStatus2.Size = new System.Drawing.Size(12, 17);
             this.lblStatus2.Text = "-";
+            // 
+            // lblArduinoStatus
+            // 
+            this.lblArduinoStatus.Name = "lblArduinoStatus";
+            this.lblArduinoStatus.Size = new System.Drawing.Size(118, 17);
+            this.lblArduinoStatus.Text = "toolStripStatusLabel1";
             // 
             // aGauge1
             // 
@@ -200,19 +206,15 @@
             // 
             // button1
             // 
+            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.Location = new System.Drawing.Point(70, 551);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(356, 106);
             this.button1.TabIndex = 7;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Text = "L A U N C H";
+            this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // lblArduinoStatus
-            // 
-            this.lblArduinoStatus.Name = "lblArduinoStatus";
-            this.lblArduinoStatus.Size = new System.Drawing.Size(118, 17);
-            this.lblArduinoStatus.Text = "toolStripStatusLabel1";
             // 
             // timer1
             // 

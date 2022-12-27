@@ -220,7 +220,20 @@ namespace voimasensori
             addToGraph(l, chartImpulse);
         }
 
-        public string Get(string uri)
+        public static async Task<string> Get(string url)
+        {
+            var request = WebRequest.Create(new Uri(url)) as HttpWebRequest;
+            request.Method = "GET";
+            request.ContentType = "application/json";
+            WebResponse responseObject = await Task<WebResponse>.Factory.FromAsync(request.BeginGetResponse, request.EndGetResponse, request);
+            var responseStream = responseObject.GetResponseStream();
+            var sr = new StreamReader(responseStream);
+            string received = await sr.ReadToEndAsync();
+
+            return received;
+        }
+
+        public string GetSync(string uri)
         {
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(uri);
             request.AutomaticDecompression = DecompressionMethods.GZip | DecompressionMethods.Deflate;
@@ -238,10 +251,39 @@ namespace voimasensori
             //CallLaunch().GetAwaiter().GetResult();
             Get("http://192.168.4.1/LAUNCH");
         }
+        private async Task queryArduinoStatus()
+        {
+            try
+            {
+                lblArduinoStatus.BackColor = Color.Orange;
+                Application.DoEvents();
 
+                string ret = "";
+                timer1.Enabled = false;
+                RequestManager rm = new RequestManager();
+                ret = await rm.GET("http://192.168.4.1/STATUS");
+                if (ret != "")
+                {
+                    ret = ret.Replace("\r", "");
+                    ret = ret.Replace("\n", "");
+                    lblArduinoStatus.Text = "Arduino OK (" + ret + ")";
+                    lblArduinoStatus.BackColor = Color.LightGreen;
+                }
+
+            }
+            catch (Exception ex)
+            {
+
+            }
+
+            timer1.Enabled = true;
+
+        }
         private void timer1_Tick_1(object sender, EventArgs e)
         {
-            lblArduinoStatus.Text = Get("http://192.168.4.1/STATUS");
+            queryArduinoStatus();
+
+            //lblArduinoStatus.Text = Get("http://192.168.4.1/STATUS");
 
         }
     }
