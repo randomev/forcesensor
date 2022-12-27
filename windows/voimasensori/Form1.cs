@@ -5,6 +5,9 @@ using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Net;
+using System.Net.Http;
+using System.Net.Sockets;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -35,9 +38,88 @@ namespace voimasensori
         {
             InitializeComponent();
         }
+        static void Connect(String server, String message)
+        {
+            try
+            {
+                // Create a TcpClient.
+                // Note, for this client to work you need to have a TcpServer
+                // connected to the same address as specified by the server, port
+                // combination.
+                Int32 port = 23;
+
+                // Prefer a using declaration to ensure the instance is Disposed later.
+                TcpClient client = new TcpClient(server, port);
+
+                // Translate the passed message into ASCII and store it as a Byte array.
+                Byte[] data = System.Text.Encoding.ASCII.GetBytes(message);
+
+                // Get a client stream for reading and writing.
+                NetworkStream stream = client.GetStream();
+
+                // Send the message to the connected TcpServer.
+                stream.Write(data, 0, data.Length);
+
+                Console.WriteLine("Sent: {0}", message);
+
+                // Receive the server response.
+
+                // Buffer to store the response bytes.
+                data = new Byte[256];
+
+                // String to store the response ASCII representation.
+                String responseData = String.Empty;
+
+                // Read the first batch of the TcpServer response bytes.
+                Int32 bytes = stream.Read(data, 0, data.Length);
+                responseData = System.Text.Encoding.ASCII.GetString(data, 0, bytes);
+                Console.WriteLine("Received: {0}", responseData);
+
+                // Explicit close is not necessary since TcpClient.Dispose() will be
+                // called automatically.
+                // stream.Close();
+                // client.Close();
+            }
+            catch (ArgumentNullException e)
+            {
+                Console.WriteLine("ArgumentNullException: {0}", e);
+            }
+            catch (SocketException e)
+            {
+                Console.WriteLine("SocketException: {0}", e);
+            }
+
+            //Console.WriteLine("\n Press Enter to continue...");
+            //Console.Read();
+        }
+        private void udptest()
+        {
+
+            UdpClient udpClient = new UdpClient();
+
+        Byte[] sendBytes = Encoding.ASCII.GetBytes("Is anybody there");
+            try
+            {
+                udpClient.Send(sendBytes, sendBytes.Length, "10.73.73.135", 2390);
+            }
+            catch (Exception ee)
+            {
+                Console.WriteLine(ee.ToString());
+            }
+
+        }
+
+        static async Task CallLaunch()
+        {
+            var client = new HttpClient();
+
+            var result = await client.GetAsync("http://192.168.4.1/LAUNCH");
+            Console.WriteLine(result.StatusCode);
+        }
 
         private void Form1_Load(object sender, EventArgs e)
         {
+
             this.Text = logfilename;
 
             ratio = new VoltageRatioInput(); //create an instance of the object
@@ -136,6 +218,31 @@ namespace voimasensori
             double l = DataToDisk.Count();
             DataToDiskMutex.ReleaseMutex();
             addToGraph(l, chartImpulse);
+        }
+
+        public string Get(string uri)
+        {
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(uri);
+            request.AutomaticDecompression = DecompressionMethods.GZip | DecompressionMethods.Deflate;
+
+            using (HttpWebResponse response = (HttpWebResponse)request.GetResponse())
+            using (Stream stream = response.GetResponseStream())
+            using (StreamReader reader = new StreamReader(stream))
+            {
+                return reader.ReadToEnd();
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            //CallLaunch().GetAwaiter().GetResult();
+            Get("http://192.168.4.1/LAUNCH");
+        }
+
+        private void timer1_Tick_1(object sender, EventArgs e)
+        {
+            lblArduinoStatus.Text = Get("http://192.168.4.1/STATUS");
+
         }
     }
 }
