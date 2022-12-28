@@ -9,7 +9,7 @@ int status = WL_IDLE_STATUS;
 
 // GET /STATUS
 int CALLTYPE_GET_STATUS = 1;
-
+int MOSFETPIN = 12;
 WiFiServer server(80);
 
 void setup() {
@@ -26,7 +26,9 @@ void setup() {
   pinMode(LEDR, OUTPUT);
   pinMode(LEDG, OUTPUT);
   pinMode(LEDB, OUTPUT);
-
+  
+  pinMode(MOSFETPIN, OUTPUT);
+  
   // check for the WiFi module:
   if (WiFi.status() == WL_NO_MODULE) {
     Serial.println("Communication with WiFi module failed!");
@@ -154,10 +156,17 @@ void loop() {
 
         if (currentLine.endsWith("GET /CANCEL")) {
           digitalWrite(LEDR, LOW);
+          digitalWrite(MOSFETPIN, LOW);
         }
 
         if (currentLine.endsWith("GET /LAUNCH")) {
           digitalWrite(LEDR, HIGH);
+          digitalWrite(MOSFETPIN, HIGH);
+          // wait 3 seconds for ignition
+          delay(3000);
+          digitalWrite(LEDR, LOW);
+          digitalWrite(MOSFETPIN, LOW);
+
         }
         
         if (currentLine.endsWith("GET /STATUS")) {
