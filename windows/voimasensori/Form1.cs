@@ -251,6 +251,7 @@ namespace voimasensori
             //CallLaunch().GetAwaiter().GetResult();
             Get("http://192.168.4.1/LAUNCH");
         }
+
         private async Task queryArduinoStatus()
         {
             try
@@ -284,6 +285,50 @@ namespace voimasensori
             queryArduinoStatus();
 
             //lblArduinoStatus.Text = Get("http://192.168.4.1/STATUS");
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+
+            string logfilenameb = "BackupData_" + DateTime.Now.ToLongDateString() + "-" + DateTime.Now.ToLongTimeString() + ".csv";
+
+            string csvLine;
+            string csvContent;
+            csvContent = "";
+
+            foreach (System.Windows.Forms.DataVisualization.Charting.Series series in this.chart1.Series)
+            {
+                string seriesName = series.Name;
+                int pointCount = series.Points.Count;
+                //string seriesType = series.Type.ToString();
+                string comma = ";";
+
+                for (int p = 0; p < pointCount; p++)
+                {
+                    System.Windows.Forms.DataVisualization.Charting.DataPoint point = series.Points[p];
+                    string yValuesCSV = String.Empty;
+                    int count = point.YValues.Length;
+                    for (int i = 0; i < count; i++)
+                    {
+                        yValuesCSV += point.YValues[i];
+
+                        if (i != count - 1)
+                            yValuesCSV += comma;
+                    }
+
+                    csvLine = seriesName + "-" + comma + point.XValue + comma + yValuesCSV;
+                    csvContent += csvLine + "\r\n";
+                }
+            }
+
+            // Using stream writer class the chart points are exported. Create an instance of the stream writer class.
+            System.IO.StreamWriter file = new System.IO.StreamWriter(logfilenameb);
+
+            // Write the datapoints into the file.
+            file.WriteLine(csvContent);
+
+            file.Close();
 
         }
     }
